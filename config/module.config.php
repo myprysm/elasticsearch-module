@@ -9,7 +9,7 @@
 
 return array(
     'elasticsearch' => array(
-        'hosts' => array('127.0.0.1')
+        'hosts' => '127.0.0.1'
     ),
     'service_manager' => array(
         'factories' => array(

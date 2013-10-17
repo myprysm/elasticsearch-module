@@ -1,5 +1,5 @@
 {
-    "name": "shopperly/elasticsearch-module",
+    "name": "myprysm/elasticsearch-module",
     "description": "Elasticsearch Module for Zend Framework",
     "license": "BSD-3-Clause",
     "keywords": [
@@ -11,7 +11,7 @@
     "require": {
         "php": ">=5.3.3",
         "zendframework/zendframework": "2.2.4",
-        "elasticsearch/elasticsearch": "0.4"
+        "elasticsearch/elasticsearch": "~0.4"
     },
     "autoload": {
         "psr-0": {

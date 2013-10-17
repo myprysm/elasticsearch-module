@@ -10,6 +10,7 @@
 namespace Elasticsearch\Options;
 
 
+use Elasticsearch\Exception\IllegalParameterException;
 use Monolog\Logger;
 use Zend\Stdlib\AbstractOptions;
 
@@ -116,6 +117,10 @@ class Configuration extends AbstractOptions {
      * @param string $connectionClass
      */
     public function setConnectionClass($connectionClass) {
+        if (!is_string($connectionClass)) {
+            throw new IllegalParameterException("Connection class has to be a string");
+        }
+
         $this->connectionClass = $connectionClass;
     }
 
@@ -130,6 +135,10 @@ class Configuration extends AbstractOptions {
      * @param string $connectionFactoryClass
      */
     public function setConnectionFactoryClass($connectionFactoryClass) {
+        if (!is_string($connectionFactoryClass)) {
+            throw new IllegalParameterException("Connection factory class has to be a string");
+        }
+
         $this->connectionFactoryClass = $connectionFactoryClass;
     }
 
@@ -144,6 +153,10 @@ class Configuration extends AbstractOptions {
      * @param array $connectionParams
      */
     public function setConnectionParams($connectionParams) {
+        if (!is_array($connectionParams)) {
+            throw new IllegalParameterException("Connection parameters have to be an array");
+        }
+
         $this->connectionParams = $connectionParams;
     }
 
@@ -158,6 +171,10 @@ class Configuration extends AbstractOptions {
      * @param string $connectionPoolClass
      */
     public function setConnectionPoolClass($connectionPoolClass) {
+        if (!is_string($connectionPoolClass)) {
+            throw new IllegalParameterException("Connection pool class has to be a string");
+        }
+
         $this->connectionPoolClass = $connectionPoolClass;
     }
 
@@ -172,6 +189,10 @@ class Configuration extends AbstractOptions {
      * @param array $connectionPoolParams
      */
     public function setConnectionPoolParams($connectionPoolParams) {
+        if (!is_array($connectionPoolParams)) {
+            throw new IllegalParameterException("Connection pool parameters have to be an array");
+        }
+
         $this->connectionPoolParams = $connectionPoolParams;
     }
 
@@ -186,6 +207,10 @@ class Configuration extends AbstractOptions {
      * @param array $guzzleOptions
      */
     public function setGuzzleOptions($guzzleOptions) {
+        if (!is_array($guzzleOptions)) {
+            throw new IllegalParameterException("Guzzle options have to be an array");
+        }
+
         $this->guzzleOptions = $guzzleOptions;
     }
 
@@ -200,6 +225,14 @@ class Configuration extends AbstractOptions {
      * @param array $hosts
      */
     public function setHosts($hosts) {
+        if (is_string($hosts)) {
+            $hosts = array($hosts);
+        }
+
+        if (!is_array($hosts)) {
+            throw new IllegalParameterException("Hosts has to be set as a single string or an array of strings");
+        }
+
         $this->hosts = $hosts;
     }
 
@@ -214,6 +247,9 @@ class Configuration extends AbstractOptions {
      * @param int $logLevel
      */
     public function setLogLevel($logLevel) {
+        if (!is_int($logLevel)) {
+            throw new IllegalParameterException("Log level has to be an integer (@see Monolog\\Logger class for log levels)");
+        }
         $this->logLevel = $logLevel;
     }
 
@@ -228,6 +264,10 @@ class Configuration extends AbstractOptions {
      * @param \Monolog\Logger $logObject
      */
     public function setLogObject($logObject) {
+        if (!($logObject instanceof Logger)) {
+            throw new IllegalParameterException("Logger has to be an instance of Monolog\\Logger for Elasticsearch Client");
+        }
+
         $this->logObject = $logObject;
     }
 
@@ -242,6 +282,10 @@ class Configuration extends AbstractOptions {
      * @param string $logPath
      */
     public function setLogPath($logPath) {
+        if (!is_string($logPath)) {
+            throw new IllegalParameterException("Log path has to be a string");
+        }
+
         $this->logPath = $logPath;
     }
 
@@ -256,6 +300,10 @@ class Configuration extends AbstractOptions {
      * @param string $selectorClass
      */
     public function setSelectorClass($selectorClass) {
+        if (!is_string($selectorClass)) {
+            throw new IllegalParameterException("Selector class has to be a string");
+        }
+
         $this->selectorClass = $selectorClass;
     }
 
@@ -270,6 +318,10 @@ class Configuration extends AbstractOptions {
      * @param string $serializerClass
      */
     public function setSerializerClass($serializerClass) {
+        if (!is_string($serializerClass)) {
+            throw new IllegalParameterException("Serializer class has to be a string");
+        }
+
         $this->serializerClass = $serializerClass;
     }
 
@@ -284,6 +336,10 @@ class Configuration extends AbstractOptions {
      * @param boolean $sniffOnStart
      */
     public function setSniffOnStart($sniffOnStart) {
+        if (!is_bool($sniffOnStart)) {
+            throw new IllegalParameterException("Sniff on start parameter is expected as boolean value");
+        }
+
         $this->sniffOnStart = $sniffOnStart;
     }
 
@@ -298,6 +354,10 @@ class Configuration extends AbstractOptions {
      * @param int $traceLevel
      */
     public function setTraceLevel($traceLevel) {
+        if (!is_int($traceLevel)) {
+            throw new IllegalParameterException("Trace log level has to be an integer (@see Monolog\\Logger class for log levels)");
+        }
+
         $this->traceLevel = $traceLevel;
     }
 
@@ -312,6 +372,10 @@ class Configuration extends AbstractOptions {
      * @param \Monolog\Logger $traceObject
      */
     public function setTraceObject($traceObject) {
+        if (!($traceObject instanceof Logger)) {
+            throw new IllegalParameterException("Logger has to be an instance of Monolog\\Logger for Elasticsearch Client");
+        }
+
         $this->traceObject = $traceObject;
     }
 
@@ -326,6 +390,10 @@ class Configuration extends AbstractOptions {
      * @param string $tracePath
      */
     public function setTracePath($tracePath) {
+        if (!is_string($tracePath)) {
+            throw new IllegalParameterException("Trace path has to be a string");
+        }
+
         $this->tracePath = $tracePath;
     }
 

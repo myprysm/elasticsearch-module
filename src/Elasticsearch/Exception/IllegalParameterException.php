@@ -10,6 +10,6 @@
 namespace Elasticsearch\Exception;
 
 
-class IllegalParameterException {
+class IllegalParameterException extends \Exception {
 
 }
