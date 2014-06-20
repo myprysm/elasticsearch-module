@@ -404,5 +404,20 @@ class Configuration extends AbstractOptions {
         return $this->tracePath;
     }
 
+    /**
+     * Cast to array
+     *
+     * @return array
+     */
+    public function toArray()
+    {
+        $array = array();
 
+        foreach ($this as $key => $value) {
+            if ($key === '__strictMode__') continue;
+            $normalizedKey = $key;
+            $array[$normalizedKey] = $value;
+        }
+        return $array;
+    }
 }
